@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:space_apps_404_name_not_found/ui/resources/nasa_colors.dart';
 import 'package:space_apps_404_name_not_found/ui/widgets/main_button.dart';
 import 'package:space_apps_404_name_not_found/utils/asset_provider.dart';
 
@@ -41,16 +44,31 @@ class _MainMenuPageState extends State<MainMenuPage>
   Widget _buttonContent({
     required String buttonLabel,
     required Color textColor,
+    String? imagePath,
     double width = 200,
   }) {
-    return SizedBox(
-      width: width,
-      child: Text(
-        buttonLabel,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            color: textColor, fontWeight: FontWeight.bold, fontSize: 20),
-      ),
+    return Column(
+      children: [
+        SizedBox(
+          width: width,
+          child: Text(
+            buttonLabel,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: textColor, fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        imagePath != null
+            ? SizedBox(
+                height: 50,
+                width: 50,
+                child: Image.asset(imagePath),
+              )
+            : const SizedBox()
+      ],
     );
   }
 
@@ -60,31 +78,57 @@ class _MainMenuPageState extends State<MainMenuPage>
       body: Stack(
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Lottie.asset('assets/stars.json'),
               const SizedBox(
                 width: double.infinity,
               ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: NasaColors.primaryLightColor,
+                ),
+                child: const Text(
+                  'Nasa App',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 72,
+              ),
               MainButton(
-                  onTap: () {},
-                  child: _buttonContent(
-                    buttonLabel: 'Sliders',
-                    textColor: Colors.greenAccent,
-                  )),
+                onTap: () {},
+                child: _buttonContent(
+                  buttonLabel: 'Sliders',
+                  textColor: Colors.greenAccent,
+                  imagePath: 'assets/planets/earth.png',
+                ),
+              ),
               divider,
               MainButton(
-                  onTap: () {},
-                  child: _buttonContent(
-                    buttonLabel: 'Cuida tu salud',
-                    textColor: Colors.purpleAccent,
-                  )),
+                onTap: () {},
+                child: _buttonContent(
+                  buttonLabel: 'Cuida tu salud',
+                  textColor: Colors.orangeAccent,
+                  imagePath: 'assets/planets/jupiter.png',
+                ),
+              ),
               divider,
               MainButton(
-                  onTap: () {},
-                  child: _buttonContent(
-                    buttonLabel: 'test',
-                    textColor: Colors.yellowAccent,
-                  )),
+                onTap: () {},
+                child: _buttonContent(
+                  buttonLabel: 'test',
+                  textColor: Colors.lightBlueAccent,
+                  imagePath: 'assets/planets/uranus.png',
+                ),
+              ),
             ],
           ),
           Positioned.fill(

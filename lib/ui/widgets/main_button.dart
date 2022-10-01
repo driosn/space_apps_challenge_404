@@ -44,7 +44,7 @@ class MainButton extends StatelessWidget {
           padding: padding ??
               const EdgeInsets.symmetric(
                 horizontal: 32.0,
-                vertical: 16.0,
+                vertical: 8.0,
               ),
           child: child,
         ),
