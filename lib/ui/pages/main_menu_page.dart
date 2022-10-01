@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:space_apps_404_name_not_found/ui/pages/test_page.dart';
 import 'package:space_apps_404_name_not_found/ui/resources/nasa_colors.dart';
 import 'package:space_apps_404_name_not_found/ui/widgets/main_button.dart';
 import 'package:space_apps_404_name_not_found/utils/asset_provider.dart';
@@ -14,9 +15,12 @@ class MainMenuPage extends StatefulWidget {
 }
 
 class _MainMenuPageState extends State<MainMenuPage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late Animation<double> astronautAnimation;
   late AnimationController astronautAnimationController;
+
+  late Animation<double> astronautAnimationForward;
+  late AnimationController astronautAnimationForwardController;
 
   @override
   void initState() {
@@ -35,6 +39,16 @@ class _MainMenuPageState extends State<MainMenuPage>
         curve: Curves.easeInOutBack,
       ),
     );
+
+    astronautAnimationForwardController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1500));
+    astronautAnimationForward = Tween(
+      begin: 0.0,
+      end: 500.0,
+    ).animate(CurvedAnimation(
+      parent: astronautAnimationForwardController,
+      curve: Curves.easeInOutBack,
+    ));
 
     astronautAnimationController.forward();
   }
@@ -65,7 +79,10 @@ class _MainMenuPageState extends State<MainMenuPage>
             ? SizedBox(
                 height: 50,
                 width: 50,
-                child: Image.asset(imagePath),
+                child: Hero(
+                  tag: imagePath,
+                  child: Image.asset(imagePath),
+                ),
               )
             : const SizedBox()
       ],
@@ -79,7 +96,7 @@ class _MainMenuPageState extends State<MainMenuPage>
         children: [
           Column(
             children: [
-              Lottie.asset('assets/stars.json'),
+              Lottie.asset(AssetProvider.stars),
               const SizedBox(
                 width: double.infinity,
               ),
@@ -108,7 +125,7 @@ class _MainMenuPageState extends State<MainMenuPage>
                 child: _buttonContent(
                   buttonLabel: 'Sliders',
                   textColor: Colors.greenAccent,
-                  imagePath: 'assets/planets/earth.png',
+                  imagePath: AssetProvider.pEarth,
                 ),
               ),
               divider,
@@ -117,16 +134,16 @@ class _MainMenuPageState extends State<MainMenuPage>
                 child: _buttonContent(
                   buttonLabel: 'Cuida tu salud',
                   textColor: Colors.orangeAccent,
-                  imagePath: 'assets/planets/jupiter.png',
+                  imagePath: AssetProvider.pJupiter,
                 ),
               ),
               divider,
               MainButton(
-                onTap: () {},
+                onTap: _goToTestPage,
                 child: _buttonContent(
                   buttonLabel: 'test',
                   textColor: Colors.lightBlueAccent,
-                  imagePath: 'assets/planets/uranus.png',
+                  imagePath: AssetProvider.pUranus,
                 ),
               ),
             ],
@@ -142,9 +159,17 @@ class _MainMenuPageState extends State<MainMenuPage>
                 child: AnimatedBuilder(
                   animation: astronautAnimation,
                   builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(astronautAnimation.value, 0.0),
-                      child: Lottie.asset(AssetProvider.astronaut),
+                    return AnimatedBuilder(
+                      animation: astronautAnimationForward,
+                      builder: (context, child) {
+                        return Transform.translate(
+                          offset: Offset(
+                              astronautAnimation.value +
+                                  astronautAnimationForward.value,
+                              0.0),
+                          child: Lottie.asset(AssetProvider.astronaut),
+                        );
+                      },
                     );
                   },
                 ),
@@ -152,6 +177,19 @@ class _MainMenuPageState extends State<MainMenuPage>
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _goToTestPage() async {
+    astronautAnimationForwardController.forward();
+    await Future.delayed(const Duration(milliseconds: 1500));
+    // ignore: use_build_context_synchronously
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        transitionDuration: const Duration(seconds: 2),
+        pageBuilder: (_, __, ___) => const TestPage(),
       ),
     );
   }
