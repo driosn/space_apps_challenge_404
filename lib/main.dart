@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:space_apps_404_name_not_found/ui/pages/start_page.dart';
+import 'package:space_apps_404_name_not_found/ui/resources/nasa_colors.dart';
+import 'package:space_apps_404_name_not_found/utils/asset_provider.dart';
 
 void main() => runApp(MyApp());
-
-class NasaColors {
-  static const Color primaryColor = Color(0xff11122D);
-  static const Color accentColor = Color(0xffCC90CB);
-  static const Color primaryLightColor = Color(0xffffffff);
-}
 
 class MyApp extends StatelessWidget {
   @override
@@ -15,28 +13,14 @@ class MyApp extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return MaterialApp(
-      title: 'Material App',
-      theme: ThemeData(
-        primaryColor: NasaColors.primaryColor,
-        accentColor: NasaColors.accentColor,
-        primaryColorLight: NasaColors.primaryLightColor,
-        scaffoldBackgroundColor: NasaColors.primaryColor,
-        textTheme: GoogleFonts.spaceMonoTextTheme(textTheme),
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            'Nombre de la app',
-          ),
-          backgroundColor: Colors.transparent,
+        title: 'Material App',
+        theme: ThemeData(
+          primaryColor: NasaColors.primaryColor,
+          accentColor: NasaColors.accentColor,
+          primaryColorLight: NasaColors.primaryLightColor,
+          scaffoldBackgroundColor: NasaColors.primaryColor,
+          textTheme: GoogleFonts.spaceMonoTextTheme(textTheme),
         ),
-        body: Center(
-            child: Text(
-          'Hola Mundo',
-          style: TextStyle(color: Theme.of(context).primaryColorLight),
-        )),
-      ),
-    );
+        home: const StartPage());
   }
 }
