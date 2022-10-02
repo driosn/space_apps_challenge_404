@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:space_apps_404_name_not_found/ui/pages/mapa_page.dart';
 import 'package:space_apps_404_name_not_found/ui/pages/test_page.dart';
 import 'package:space_apps_404_name_not_found/ui/resources/nasa_colors.dart';
 import 'package:space_apps_404_name_not_found/ui/widgets/main_button.dart';
@@ -130,7 +131,7 @@ class _MainMenuPageState extends State<MainMenuPage>
               ),
               divider,
               MainButton(
-                onTap: () {},
+                onTap: _goToMapPage,
                 child: _buttonContent(
                   buttonLabel: 'Cuida tu salud',
                   textColor: Colors.orangeAccent,
@@ -190,6 +191,19 @@ class _MainMenuPageState extends State<MainMenuPage>
       PageRouteBuilder(
         transitionDuration: const Duration(seconds: 2),
         pageBuilder: (_, __, ___) => const TestPage(),
+      ),
+    );
+  }
+
+
+  void _goToMapPage() async {
+    astronautAnimationForwardController.forward();
+    await Future.delayed(const Duration(milliseconds: 1500));
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        transitionDuration: const Duration(seconds: 2),
+        pageBuilder: (_, __, ___) => TestPage(),
       ),
     );
   }
