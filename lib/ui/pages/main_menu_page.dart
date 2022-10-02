@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:space_apps_404_name_not_found/ui/pages/mapa_page.dart';
+import 'package:space_apps_404_name_not_found/ui/pages/solar_wind_simulator_page.dart';
 import 'package:space_apps_404_name_not_found/ui/pages/test_page.dart';
 import 'package:space_apps_404_name_not_found/ui/resources/nasa_colors.dart';
 import 'package:space_apps_404_name_not_found/ui/widgets/main_button.dart';
@@ -131,9 +132,9 @@ class _MainMenuPageState extends State<MainMenuPage>
               ),
               divider,
               MainButton(
-                onTap: _goToMapPage,
+                onTap: _goToSolarWindSimulatorPage,
                 child: _buttonContent(
-                  buttonLabel: 'Cuida tu salud',
+                  buttonLabel: 'Simulador Viento Solar',
                   textColor: Colors.orangeAccent,
                   imagePath: AssetProvider.pJupiter,
                 ),
@@ -182,6 +183,21 @@ class _MainMenuPageState extends State<MainMenuPage>
     );
   }
 
+  void _goToSolarWindSimulatorPage() async {
+    astronautAnimationForwardController.forward();
+    await Future.delayed(const Duration(milliseconds: 1500));
+    // ignore: use_build_context_synchronously
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        transitionDuration: const Duration(seconds: 2),
+        pageBuilder: (_, __, ___) => const SolarWindSimulatorPage(),
+      ),
+    );
+    await Future.delayed(const Duration(milliseconds: 500));
+    astronautAnimationForwardController.reset();
+  }
+
   void _goToTestPage() async {
     astronautAnimationForwardController.forward();
     await Future.delayed(const Duration(milliseconds: 1500));
@@ -193,8 +209,9 @@ class _MainMenuPageState extends State<MainMenuPage>
         pageBuilder: (_, __, ___) => const TestPage(),
       ),
     );
+    await Future.delayed(const Duration(milliseconds: 500));
+    astronautAnimationForwardController.reset();
   }
-
 
   void _goToMapPage() async {
     astronautAnimationForwardController.forward();
