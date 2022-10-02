@@ -191,8 +191,9 @@ class _SolarWindSimulatorPageState extends State<SolarWindSimulatorPage>
                             valueListenable: densityValueNotifier,
                             builder: (context, double value, child) {
                               return _parameterSlider(
-                                parameterName: 'Densidad',
-                                parameterValuesIn: '1/cm3',
+                                parameterName: 'Density',
+                                parameterValuesIn:
+                                    '${double.parse(densityValueNotifier.value.toStringAsFixed(2))} 1/cm3',
                                 minValue: 1.0,
                                 maxValue: 100.0,
                                 value: value,
@@ -206,8 +207,9 @@ class _SolarWindSimulatorPageState extends State<SolarWindSimulatorPage>
                             valueListenable: velocityValueNotifier,
                             builder: (context, double value, child) {
                               return _parameterSlider(
-                                parameterName: 'Velocidad',
-                                parameterValuesIn: 'Km/s',
+                                parameterName: 'Velocity',
+                                parameterValuesIn:
+                                    '${double.parse(velocityValueNotifier.value.toStringAsFixed(2))} Km/s',
                                 minValue: 200.0,
                                 maxValue: 1200.0,
                                 value: value,
@@ -221,8 +223,9 @@ class _SolarWindSimulatorPageState extends State<SolarWindSimulatorPage>
                             valueListenable: temperatureValueNotifier,
                             builder: (context, double value, child) {
                               return _parameterSlider(
-                                parameterName: 'Temperatura',
-                                parameterValuesIn: 'Kelvin',
+                                parameterName: 'Temperature',
+                                parameterValuesIn:
+                                    '${double.parse(temperatureValueNotifier.value.toStringAsFixed(2))} Kelvin',
                                 minValue: 1.0,
                                 maxValue: 100.0,
                                 value: value,

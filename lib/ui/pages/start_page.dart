@@ -79,7 +79,7 @@ class _StartPageState extends State<StartPage>
                   height: 80,
                   child: Center(
                     child: Text(
-                      'Comenzar!',
+                      'Start!',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),

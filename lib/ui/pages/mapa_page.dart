@@ -12,10 +12,10 @@ class MapaPage extends StatefulWidget {
 
   @override
   State<MapaPage> createState() => _MapaPageState();
-
 }
 
-class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin {
+class _MapaPageState extends State<MapaPage>
+    with SingleTickerProviderStateMixin {
   late Animation<double> astronautAnimation;
   late AnimationController astronautAnimationController;
 
@@ -31,17 +31,35 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
   late Position position;
 
   Set<Circle> circles = Set.from([
-
     //la paz
     Circle(
-      circleId: CircleId("lp1"),
+      circleId: CircleId('ao1'),
+      center: LatLng(-16.5215127, -68.1063026),
+      fillColor: Colors.amber.shade200,
+      strokeColor: Colors.amber,
+      radius: 800,
+    ),
+    Circle(
+      circleId: CircleId("ao2"),
       center: LatLng(-16.489689, -68.119293),
       fillColor: Colors.red.shade100,
       strokeColor: Colors.red.shade100,
-
-      radius: 2000,
+      radius: 200,
     ),
-
+    Circle(
+      circleId: CircleId("ao3"),
+      center: LatLng(-16.574169, -68.0919378),
+      fillColor: Colors.amber.shade200,
+      strokeColor: Colors.amber,
+      radius: 500,
+    ),
+    Circle(
+      circleId: CircleId("ao4"),
+      center: LatLng(-16.5197545, -68.1344611),
+      fillColor: Colors.green.shade100,
+      strokeColor: Colors.green.shade300,
+      radius: 500,
+    ),
     Circle(
       circleId: CircleId("lp2"),
       center: LatLng(-16.489689, -68.119293),
@@ -58,14 +76,11 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
       radius: 500,
     ),
 
-
-
     Circle(
       circleId: CircleId("lp4"),
       center: LatLng(-16.489689, -68.119293),
       fillColor: Colors.red.shade100,
       strokeColor: Colors.red.shade100,
-
       radius: 2000,
     ),
 
@@ -88,10 +103,9 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
     //Santa Cruz
     Circle(
       circleId: CircleId("bol1"),
-      center: LatLng(-17.7892,	-63.1975),
+      center: LatLng(-17.7892, -63.1975),
       fillColor: Colors.red.shade100,
       strokeColor: Colors.red.shade100,
-
       radius: 4000,
     ),
 
@@ -105,7 +119,7 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
 
     Circle(
       circleId: CircleId("bol3"),
-      center: LatLng(-17.7892,	-63.1975),
+      center: LatLng(-17.7892, -63.1975),
       fillColor: Colors.red,
       strokeColor: Colors.red,
       radius: 500,
@@ -113,10 +127,9 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
 
     Circle(
       circleId: CircleId("bol4"),
-      center: LatLng(-17.7892,	-63.1975),
+      center: LatLng(-17.7892, -63.1975),
       fillColor: Colors.red.shade100,
       strokeColor: Colors.amber.shade100,
-
       radius: 4000,
     ),
 
@@ -130,7 +143,7 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
 
     Circle(
       circleId: CircleId("bol6"),
-      center: LatLng(-17.7892,	-63.1975),
+      center: LatLng(-17.7892, -63.1975),
       fillColor: Colors.red,
       strokeColor: Colors.red,
       radius: 500,
@@ -168,120 +181,110 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
     //     -16.3667	-60.9500
     //     -21.4423	-65.7190
 
-
-
-
     //latam
     Circle(
       circleId: CircleId("ltm1"),
-      center: LatLng(-34.5997,	-58.3819),
-      fillColor: Colors.red.shade100,
-      strokeColor: Colors.red.shade100,
+      center: LatLng(-34.5997, -58.3819),
+      fillColor: Colors.red.shade100.withOpacity(0.7),
+      strokeColor: Colors.red.shade100.withOpacity(0.7),
       radius: 2000,
     ),
 
     Circle(
       circleId: CircleId("ltm2"),
-      center: LatLng(-34.5997,	-58.3819),
-      fillColor: Colors.red.shade200,
-      strokeColor: Colors.red.shade200,
+      center: LatLng(-34.5997, -58.3819),
+      fillColor: Colors.red.shade200.withOpacity(0.7),
+      strokeColor: Colors.red.shade200.withOpacity(0.7),
       radius: 1500,
     ),
 
     Circle(
       circleId: CircleId("ltm3"),
-      center: LatLng(-31.4167,	-64.1833),
-      fillColor: Colors.red.shade100,
-      strokeColor: Colors.red.shade100,
+      center: LatLng(-31.4167, -64.1833),
+      fillColor: Colors.red.shade100.withOpacity(0.7),
+      strokeColor: Colors.red.shade100.withOpacity(0.7),
       radius: 2000,
     ),
 
     Circle(
       circleId: CircleId("ltm4"),
-      center: LatLng(-32.9575,	-60.6394),
-      fillColor: Colors.red.shade200,
-      strokeColor: Colors.red.shade200,
+      center: LatLng(-32.9575, -60.6394),
+      fillColor: Colors.red.shade200.withOpacity(0.7),
+      strokeColor: Colors.red.shade200.withOpacity(0.7),
       radius: 1500,
     ),
 
     Circle(
       circleId: CircleId("ltm5"),
-      center: LatLng(-45.8667,	-67.5000),
-      fillColor: Colors.red.shade100,
-      strokeColor: Colors.red.shade100,
+      center: LatLng(-45.8667, -67.5000),
+      fillColor: Colors.red.shade100.withOpacity(0.7),
+      strokeColor: Colors.red.shade100.withOpacity(0.7),
       radius: 2000,
     ),
 
     Circle(
       circleId: CircleId("ltm6"),
-      center: LatLng(-26.8167,	-65.2167),
-      fillColor: Colors.red.shade200,
-      strokeColor: Colors.red.shade200,
+      center: LatLng(-26.8167, -65.2167),
+      fillColor: Colors.red.shade200.withOpacity(0.7),
+      strokeColor: Colors.red.shade200.withOpacity(0.7),
       radius: 1500,
     ),
 
     Circle(
       circleId: CircleId("ltm7"),
-      center: LatLng(-26.8167,	-65.2167),
-      fillColor: Colors.red.shade100,
-      strokeColor: Colors.red.shade100,
+      center: LatLng(-26.8167, -65.2167),
+      fillColor: Colors.red.shade100.withOpacity(0.7),
+      strokeColor: Colors.red.shade100.withOpacity(0.7),
       radius: 2000,
     ),
 
     Circle(
       circleId: CircleId("ltm8"),
-      center: LatLng(-38.0000,	-57.5500),
-      fillColor: Colors.red.shade200,
-      strokeColor: Colors.red.shade200,
+      center: LatLng(-38.0000, -57.5500),
+      fillColor: Colors.red.shade200.withOpacity(0.7),
+      strokeColor: Colors.red.shade200.withOpacity(0.7),
       radius: 1500,
     ),
 
-
     Circle(
       circleId: CircleId("ltm9"),
-      center: LatLng(-38.0000,	-57.5500),
-      fillColor: Colors.red.shade100,
-      strokeColor: Colors.red.shade100,
+      center: LatLng(-38.0000, -57.5500),
+      fillColor: Colors.red.shade100.withOpacity(0.7),
+      strokeColor: Colors.red.shade100.withOpacity(0.7),
       radius: 2000,
     ),
 
     Circle(
       circleId: CircleId("ltm10"),
-      center: LatLng(-24.7883,	-65.4106),
+      center: LatLng(-24.7883, -65.4106),
       fillColor: Colors.amber.shade200,
       strokeColor: Colors.amber.shade200,
       radius: 1500,
     ),
-
 
     Circle(
       circleId: CircleId("ltm11"),
-      center: LatLng(-31.5375,	-68.5364),
+      center: LatLng(-31.5375, -68.5364),
       fillColor: Colors.amber.shade200,
       strokeColor: Colors.amber.shade200,
       radius: 1500,
     ),
 
-
     Circle(
       circleId: CircleId("ltm12"),
-      center: LatLng(-31.5375,	-68.5364),
+      center: LatLng(-31.5375, -68.5364),
       fillColor: Colors.amber.shade200,
       strokeColor: Colors.amber.shade200,
       radius: 800,
     ),
-
-
 
     Circle(
       circleId: CircleId("ltm13"),
-      center: LatLng(-31.5375,	-68.5364),
+      center: LatLng(-31.5375, -68.5364),
       fillColor: Colors.amber.shade200,
       strokeColor: Colors.amber.shade200,
       radius: 800,
     ),
-
-
   ]);
 
   @override
@@ -306,7 +309,6 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
     markers = Set<Marker>();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-
       var permisoMapa = await Permission.location.status;
       if (permisoMapa.isGranted) {
         await iniciarLocalizacion();
@@ -320,35 +322,37 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  content: Text("Es necesario que acepte los permisos de GPS para entrar a mapa"),
+                  content:
+                      Text("GPS Permissions are required to enter to the map"),
                   actions: [
                     TextButton(
                         child: Text('Cancel'),
                         onPressed: () {
                           Navigator.of(context).pop();
                         }),
-
                   ],
                 );
-              }
-          );
+              });
         }
       }
     });
-
   }
 
   Future<void> iniciarLocalizacion() async {
     try {
-      position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation,);
+      position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.bestForNavigation,
+      );
     } catch (error) {
-      if (error.toString().contains("location") && error.toString().contains("disabled")) {
+      if (error.toString().contains("location") &&
+          error.toString().contains("disabled")) {
         Navigator.pop(context);
         showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
-                content: Text("Es necesario que se habilite el GPS para ingresar a mapa"),
+                content: Text(
+                    "Is needed that you able GPS permissions to enter to the map"),
                 actions: [
                   TextButton(
                     child: Text("Ok"),
@@ -358,8 +362,7 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
                   )
                 ],
               );
-            }
-        );
+            });
       }
       print("ERROR:");
       print(error);
@@ -371,17 +374,16 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
       );
       markers.add(marker);
 
-      setState(() { animacionTerminada = true; });
+      setState(() {
+        animacionTerminada = true;
+      });
 
-      final GoogleMapController controladorGoogle = await _controladorMapa.future;
-      controladorGoogle.animateCamera(
-          CameraUpdate.newCameraPosition(
-              CameraPosition(
-                  target: LatLng(position.latitude, position.longitude),
-                  zoom: 18
-              )
-          )
-      );
+      final GoogleMapController controladorGoogle =
+          await _controladorMapa.future;
+      controladorGoogle.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(
+              target: LatLng(position.latitude, position.longitude),
+              zoom: 18)));
     }
   }
 
@@ -390,76 +392,68 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
     return Scaffold(
         body: animacionTerminada
             ? Stack(
-          children: [
-            GoogleMap(
-              mapType: tipoMapa,
-              initialCameraPosition: CameraPosition(
-                  target: LatLng(position.latitude, position.longitude),
-                  zoom: 0
-              ),
-              markers: getmarkers(),
-              onMapCreated: (GoogleMapController controlador) async {
-                _controladorMapa.complete(controlador);
-                },
-
-              circles: circles,
-            ),
-
-
-            const SizedBox(
-              height: double.infinity,
-              width: double.infinity,
-            ),
-            Positioned(
-              top: -60,
-              right: -60,
-              child: Hero(
-                tag: AssetProvider.pJupiter,
-                child: SizedBox(
-                  height: 300,
-                  width: 300,
-                  child: Image.asset(AssetProvider.pJupiter),
-                ),
-              ),
-            ),
-            Positioned.fill(
-              bottom: -80,
-              left: -350,
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: SizedBox(
-                  height: 400,
-                  width: 400,
-                  child: AnimatedBuilder(
-                    animation: astronautAnimation,
-                    builder: (context, child) {
-                      return Transform.translate(
-                        offset: Offset(astronautAnimation.value, 0.0),
-                        child: lt.Lottie.asset(AssetProvider.astronaut),
-                      );
+                children: [
+                  GoogleMap(
+                    mapType: tipoMapa,
+                    initialCameraPosition: CameraPosition(
+                        target: LatLng(position.latitude, position.longitude),
+                        zoom: 0),
+                    markers: getmarkers(),
+                    onMapCreated: (GoogleMapController controlador) async {
+                      _controladorMapa.complete(controlador);
                     },
+                    circles: circles,
                   ),
-                ),
-              ),
-            ),
-            Positioned(
-                top: 12,
-                right: 12,
-                child: _botonCambiarTipoMapa()
-            ),
-
-            Positioned(
-              top: 60,
-              right: 12,
-              child: _botonUbicacionActual(),
-            )
-          ],
-        )
-            : Container()
-    );
+                  const SizedBox(
+                    height: double.infinity,
+                    width: double.infinity,
+                  ),
+                  Positioned(
+                    top: -60,
+                    right: -60,
+                    child: Hero(
+                      tag: AssetProvider.pEarth,
+                      child: SizedBox(
+                        height: 300,
+                        width: 300,
+                        child: Image.asset(AssetProvider.pEarth),
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(
+                    bottom: -80,
+                    left: -350,
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: SizedBox(
+                        height: 400,
+                        width: 400,
+                        child: AnimatedBuilder(
+                          animation: astronautAnimation,
+                          builder: (context, child) {
+                            return Transform.translate(
+                              offset: Offset(astronautAnimation.value, 0.0),
+                              child: lt.Lottie.asset(AssetProvider.astronaut),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 12,
+                    right: 12,
+                    child: _botonCambiarTipoMapa(),
+                  ),
+                  Positioned(
+                    top: 60,
+                    right: 12,
+                    child: _botonUbicacionActual(),
+                  ),
+                ],
+              )
+            : Container());
   }
-
-
 
   Widget _botonCambiarTipoMapa() {
     return GestureDetector(
@@ -489,10 +483,8 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
                   offset: Offset(3, 3),
                   color: Colors.black12,
                   blurRadius: 2,
-                  spreadRadius: 2
-              )
-            ]
-        ),
+                  spreadRadius: 2)
+            ]),
       ),
     );
   }
@@ -517,48 +509,57 @@ class _MapaPageState extends State<MapaPage>with SingleTickerProviderStateMixin 
                   offset: Offset(3, 3),
                   color: Colors.black12,
                   blurRadius: 2,
-                  spreadRadius: 2
-              )
-            ]
-        ),
+                  spreadRadius: 2)
+            ]),
       ),
     );
   }
 
   Future<void> _focusUbicacionActual() async {
-    Position ubicacionActual = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation,);
-    Position ubicacionActual1 = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation,);
-    Position ubicacionActual2 = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation,);
-    Position ubicacionActual3 = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation,);
-    Position ubicacionActual4 = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation,);
-    double latProm = (ubicacionActual.latitude+ ubicacionActual1.latitude+ ubicacionActual2.latitude+ ubicacionActual3.latitude+ ubicacionActual4.latitude)/5;
-    double longProm = (ubicacionActual.longitude+ ubicacionActual1.longitude+ ubicacionActual2.longitude+ ubicacionActual3.longitude+ ubicacionActual4.longitude)/5;
-    final GoogleMapController controladorGoogle = await _controladorMapa.future;
-    controladorGoogle.animateCamera(
-        CameraUpdate.newCameraPosition(
-            CameraPosition(
-                target: LatLng(ubicacionActual.latitude, ubicacionActual.longitude),
-                zoom: 18
-            )
-        )
+    Position ubicacionActual = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
     );
+    Position ubicacionActual1 = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
+    );
+    Position ubicacionActual2 = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
+    );
+    Position ubicacionActual3 = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
+    );
+    Position ubicacionActual4 = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
+    );
+    double latProm = (ubicacionActual.latitude +
+            ubicacionActual1.latitude +
+            ubicacionActual2.latitude +
+            ubicacionActual3.latitude +
+            ubicacionActual4.latitude) /
+        5;
+    double longProm = (ubicacionActual.longitude +
+            ubicacionActual1.longitude +
+            ubicacionActual2.longitude +
+            ubicacionActual3.longitude +
+            ubicacionActual4.longitude) /
+        5;
+    final GoogleMapController controladorGoogle = await _controladorMapa.future;
+    controladorGoogle.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+            target: LatLng(ubicacionActual.latitude, ubicacionActual.longitude),
+            zoom: 18)));
     setState(() {
       markers.clear();
       markers.add(Marker(
         markerId: MarkerId('mkr'),
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
         position: LatLng(latProm, longProm),
-      )
-      );
+      ));
     });
   }
-
 
   Set<Marker> getmarkers() {
-
-    setState(() {
-    });
+    setState(() {});
     return markers;
   }
-
 }

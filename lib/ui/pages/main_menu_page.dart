@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:space_apps_404_name_not_found/ui/pages/mapa_page.dart';
 import 'package:space_apps_404_name_not_found/ui/pages/solar_wind_simulator_page.dart';
-import 'package:space_apps_404_name_not_found/ui/pages/test_page.dart';
+import 'package:space_apps_404_name_not_found/ui/pages/planets_page.dart';
 import 'package:space_apps_404_name_not_found/ui/resources/nasa_colors.dart';
 import 'package:space_apps_404_name_not_found/ui/widgets/main_button.dart';
 import 'package:space_apps_404_name_not_found/utils/asset_provider.dart';
@@ -112,10 +112,10 @@ class _MainMenuPageState extends State<MainMenuPage>
                   color: NasaColors.primaryLightColor,
                 ),
                 child: const Text(
-                  'Nasa App',
+                  'SUNY',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 24,
+                    fontSize: 32,
                   ),
                 ),
               ),
@@ -123,9 +123,9 @@ class _MainMenuPageState extends State<MainMenuPage>
                 height: 72,
               ),
               MainButton(
-                onTap: () {},
+                onTap: _goToMapPage,
                 child: _buttonContent(
-                  buttonLabel: 'Sliders',
+                  buttonLabel: 'How is the Earth today? ',
                   textColor: Colors.greenAccent,
                   imagePath: AssetProvider.pEarth,
                 ),
@@ -134,7 +134,7 @@ class _MainMenuPageState extends State<MainMenuPage>
               MainButton(
                 onTap: _goToSolarWindSimulatorPage,
                 child: _buttonContent(
-                  buttonLabel: 'Simulador Viento Solar',
+                  buttonLabel: 'Solar Wind Simulator',
                   textColor: Colors.orangeAccent,
                   imagePath: AssetProvider.pJupiter,
                 ),
@@ -143,7 +143,7 @@ class _MainMenuPageState extends State<MainMenuPage>
               MainButton(
                 onTap: _goToTestPage,
                 child: _buttonContent(
-                  buttonLabel: 'test',
+                  buttonLabel: 'Know more! (Planets)',
                   textColor: Colors.lightBlueAccent,
                   imagePath: AssetProvider.pUranus,
                 ),
@@ -178,6 +178,22 @@ class _MainMenuPageState extends State<MainMenuPage>
               ),
             ),
           ),
+          Positioned(
+            right: 0,
+            bottom: 0,
+            child: Container(
+              height: 120,
+              width: 120,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(65)),
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/instagram_filter.jpeg',
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -206,7 +222,7 @@ class _MainMenuPageState extends State<MainMenuPage>
       context,
       PageRouteBuilder(
         transitionDuration: const Duration(seconds: 2),
-        pageBuilder: (_, __, ___) => const TestPage(),
+        pageBuilder: (_, __, ___) => PlanetsPage(),
       ),
     );
     await Future.delayed(const Duration(milliseconds: 500));
@@ -216,6 +232,7 @@ class _MainMenuPageState extends State<MainMenuPage>
   void _goToMapPage() async {
     astronautAnimationForwardController.forward();
     await Future.delayed(const Duration(milliseconds: 1500));
+    // ignore: use_build_context_synchronously
     Navigator.push(
       context,
       PageRouteBuilder(
@@ -223,5 +240,7 @@ class _MainMenuPageState extends State<MainMenuPage>
         pageBuilder: (_, __, ___) => MapaPage(),
       ),
     );
+    await Future.delayed(const Duration(milliseconds: 500));
+    astronautAnimationForwardController.reset();
   }
 }
